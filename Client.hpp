@@ -13,11 +13,14 @@ private:
     vector<ContBancar> conturi;
 
 public:
+    Client();
     Client(const string& nume);
     ~Client();
+    Client(const Client& other); // Copy constructor
     void adaugaCont(const ContBancar& cont);
     void afiseazaConturi() const;
     const string& getNume() const;
+    Client& operator=(const Client& other); // Assignment operator
 };
 
 #endif // CLIENT_HPP

@@ -13,7 +13,9 @@ private:
     double sold;
 
 public:
+    ContBancar();
     ContBancar(const string& numeCont, double sold);
+    ContBancar(const ContBancar& other);
     ~ContBancar();
     void depune(double suma);
     void retrage(double suma);

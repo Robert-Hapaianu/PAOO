@@ -1,11 +1,16 @@
 #include "Client.hpp"
 #include <iostream>
 
+Client::Client(){}
+
 Client::Client(const string& nume) : nume(nume) {}
 
 Client::~Client(){
     cout<<"\nClient destructor was called\n";
 }
+
+
+Client::Client(const Client& other) : nume(other.nume), conturi(other.conturi) {}
 
 void Client::adaugaCont(const ContBancar& cont) {
     conturi.push_back(cont);
@@ -18,6 +23,29 @@ void Client::afiseazaConturi() const {
     }
 }
 
+
+
 const string& Client::getNume() const {
     return nume;
+}
+
+
+Client& Client::operator=(const Client& other) {
+    // Check for self-assignment
+    if (this == &other) {
+        return *this;
+    }
+
+    // Copy the name
+    nume = other.nume;
+
+    // Clear the existing conturi and copy the new ones
+    conturi.clear();
+    for (const auto& cont : other.conturi) {
+        conturi.push_back(cont);  // Deep copy of each ContBancar
+    }
+   
+
+
+    return *this;
 }
