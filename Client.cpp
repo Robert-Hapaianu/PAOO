@@ -10,11 +10,15 @@ Client::~Client(){
 }
 
 
-Client::Client(const Client& other) : nume(other.nume), conturi(other.conturi) {}
+Client::Client(const Client& other) : nume(other.nume), conturi(other.conturi) {
+    cout<<"Client copy constructor was called\n";
+}
+
+Clint::Client(const Client other)
 
 void Client::adaugaCont(const ContBancar& cont) {
     conturi.push_back(cont);
-}
+} 
 
 void Client::afiseazaConturi() const {
     cout << "Conturi pentru clientul " << nume << ":\n";
@@ -35,7 +39,7 @@ Client& Client::operator=(const Client& other) {
     if (this == &other) {
         return *this;
     }
-
+    
     // Copy the name
     nume = other.nume;
 
@@ -48,4 +52,13 @@ Client& Client::operator=(const Client& other) {
 
 
     return *this;
+}
+
+
+BusinessClient::BusinessClient(const string& nume, const string& businessIDNumber) : Client(nume), businessIDNumber(businessIDNumber){
+    cout << "BusinessClient constructor was called\n";
+}
+
+IndividualClient::IndividualClient(const string& nume, const string& CNP) : Client(nume), CNP(CNP){
+    cout << "IndividualClient constructor was called\n";
 }

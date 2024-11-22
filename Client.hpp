@@ -23,4 +23,20 @@ public:
     Client& operator=(const Client& other); // Assignment operator
 };
 
+class BusinessClient: public Client{
+    private:
+    string businessIDNumber;
+    public:
+    BusinessClient();
+    BusinessClient(const string& nume, const string& businessIDNumber);
+};
+
+class IndividualClient: public Client{
+    private:
+    string CNP;
+    public:
+    IndividualClient();
+    IndividualClient(const string& nume, const string& CNP);
+};
+
 #endif // CLIENT_HPP
