@@ -10,6 +10,13 @@ ContBancar::ContBancar(const ContBancar& other)
     // Here, we copy the values of numeCont and sold from the other object
 }
 
+// Move constructor
+ContBancar::ContBancar(ContBancar&& other) noexcept 
+    : numeCont(move(other.numeCont)), sold(other.sold) {
+    other.sold = 0.0; // Reset the moved-from object's state
+}
+
+
 ContBancar::~ContBancar(){
     cout<<"\nContBancar destructor was called\n";
 }
@@ -30,4 +37,25 @@ void ContBancar::retrage(double suma) {
 
 void ContBancar::afiseazaDetalii() const {
     cout << "Cont: " << numeCont << " | Sold: " << sold << endl;
+}
+
+string ContBancar::getNumeCont() {
+    return numeCont;
+}
+
+double ContBancar::getSold() {
+    return sold;
+}
+
+void ContBancar::setSold(double sold) {
+    this->sold = sold;
+}
+
+ContBancar& ContBancar::operator=(const ContBancar& other) { 
+    if (this != &other) {  // Self-assignment check 
+        numeCont = other.numeCont; 
+        sold = other.sold; 
+    } 
+    cout << "Copy assignment operator called\n"; 
+    return *this; 
 }

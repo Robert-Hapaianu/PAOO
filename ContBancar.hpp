@@ -16,11 +16,15 @@ public:
     ContBancar();
     ContBancar(const string& numeCont, double sold);
     ContBancar(const ContBancar& other);
+    ContBancar(ContBancar&& other) noexcept;
     ~ContBancar();
+    ContBancar& operator=(const ContBancar& other);
     void depune(double suma);
     void retrage(double suma);
     void afiseazaDetalii() const;
-    
+    string getNumeCont();
+    double getSold();
+    void setSold(double sold);
 };
 
 #endif
