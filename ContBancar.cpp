@@ -4,11 +4,11 @@ ContBancar::ContBancar(){}
 
 ContBancar::ContBancar(const string& numeCont, double sold) : numeCont(numeCont), sold(sold) {}
 
-// Copy constructor - creates a new ContBancar with the same data
-ContBancar::ContBancar(const ContBancar& other)
-    : numeCont(other.numeCont), sold(other.sold) {
-    // Here, we copy the values of numeCont and sold from the other object
-}
+// // Copy constructor - creates a new ContBancar with the same data
+// ContBancar::ContBancar(const ContBancar& other)
+//     : numeCont(other.numeCont), sold(other.sold) {
+//     // Here, we copy the values of numeCont and sold from the other object
+// }
 
 // Move constructor
 ContBancar::ContBancar(ContBancar&& other) noexcept 

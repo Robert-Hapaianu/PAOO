@@ -15,7 +15,7 @@ private:
 public:
     ContBancar();
     ContBancar(const string& numeCont, double sold);
-    ContBancar(const ContBancar& other);
+    ContBancar(const ContBancar& other)=delete;
     ContBancar(ContBancar&& other) noexcept;
     ~ContBancar();
     ContBancar& operator=(const ContBancar& other);

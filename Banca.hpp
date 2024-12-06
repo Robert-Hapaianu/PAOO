@@ -1,8 +1,8 @@
 #ifndef BANCA_HPP
 #define BANCA_HPP
 
-
 #include <vector>
+#include <memory>
 #include "Client.hpp"
 #include <iostream>
 using namespace std;
@@ -10,19 +10,15 @@ using namespace std;
 class Banca {
 private:
     string nume;
-    vector<Client> clienti;
+    vector<shared_ptr<Client>> clienti; // Use shared_ptr for clients
 
 public:
     Banca(const string& nume);
-
     ~Banca();
-
-    // Adaugă un client nou
-    void adaugaClient( Client& client);
-
-    // Afișează detaliile tuturor clienților și conturilor
-    void afiseazaDetaliiClienti() ;
+    void adaugaClient(const shared_ptr<Client>& client);
+    void afiseazaDetaliiClienti() const;
+    void cleanupClients(); // Method to remove nullptr entries
+    void removeClient(const shared_ptr<Client>& client); // Method to remove specific client
 };
 
-
-#endif
+#endif // BANCA_HPP
